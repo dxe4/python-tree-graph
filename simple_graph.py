@@ -53,10 +53,9 @@ class TreeGraph(object):
 
     def visit(self, node, _dict):
         children = self.edges[node]
-        if children:
-            _dict[node] = dict(zip(children, ({} for i in range(0, len(children)))))
-            for i in children:
-                self.visit(i, _dict[node])
+        _dict[node] = {} if children else None
+        for i in children:
+            self.visit(i, _dict[node])
         return _dict
 
     def to_dict(self):
