@@ -64,8 +64,9 @@ class TestAdding2(unittest.TestCase):
         depth = 1
         parent = root
         for count, i in enumerate(self.nodes):
+            print(count, i, depth, parent)
             self.graph.add_node(i, depth, parent=parent)
-            if count % 10 == 0:
+            if (count+1) % 5 == 0:
                 depth += 1
                 parent = i
         from pprint import pprint

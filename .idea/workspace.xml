@@ -12,7 +12,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/python-simple-graph$test.coverage" NAME="test Coverage Results" MODIFIED="1394895016949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python-simple-graph$test.coverage" NAME="test Coverage Results" MODIFIED="1394895225300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python-simple-graph$simple_graph.coverage" NAME="simple_graph Coverage Results" MODIFIED="1394893605715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python-simple-graph$foo.coverage" NAME="foo Coverage Results" MODIFIED="1394877619982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -40,7 +40,7 @@
       <file leaf-file-name="test.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="26" selection-start="2833" selection-end="2833" vertical-scroll-proportion="0.71092075" vertical-offset="658" max-vertical-offset="1200">
+            <state line="72" column="36" selection-start="3066" selection-end="3066" vertical-scroll-proportion="0.80728054" vertical-offset="703" max-vertical-offset="1215">
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -443,7 +443,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="26" selection-start="2833" selection-end="2833" vertical-scroll-proportion="0.71092075" vertical-offset="658" max-vertical-offset="1200">
+        <state line="72" column="36" selection-start="3066" selection-end="3066" vertical-scroll-proportion="0.80728054" vertical-offset="703" max-vertical-offset="1215">
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
