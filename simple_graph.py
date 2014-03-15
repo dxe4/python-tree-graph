@@ -17,6 +17,12 @@ class Node(object):
     def __hash__(self):
         return hash(self.data)
 
+    def __repr__(self):
+        return repr(self.data)
+
+    def __str__(self):
+        return str(self.data)
+
 
 class Graph(object):
     def __init__(self):
