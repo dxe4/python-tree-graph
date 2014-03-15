@@ -62,4 +62,4 @@ class TreeGraph(object):
         return _dict
 
     def to_dict(self):
-        return [self.visit(i, {}) for i in self.nodes[0]]
+        return {i: self.visit(k, {}) for i in self.nodes[0] for k in self.edges[i]}

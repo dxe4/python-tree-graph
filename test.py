@@ -43,8 +43,8 @@ class TestAdding(unittest.TestCase):
     def test_init(self):
         assert sum([len(i) for i in self.graph.nodes]) == len(self._list)
         assert len([len(i) for i in self.graph.nodes]) == self.chunk_size
-        assert self.graph.to_dict()[0] == {
-            'Sophia': {'Hannah': {'Elizabeth': {'Alexis': {'Lauren': None}}}}}
+        assert self.graph.to_dict()["Sophia"] == {
+            'Hannah': {'Elizabeth': {'Alexis': {'Lauren': None}}}}
 
 
 class TestAdding2(unittest.TestCase):
@@ -64,7 +64,7 @@ class TestAdding2(unittest.TestCase):
                 parent = i
 
         _dict = self.graph.to_dict()
-        _keys = _dict[0]["Sophia"]["Emily"]["Hannah"]["Brooklyn"].keys()
+        _keys = _dict["Sophia"]["Emily"]["Hannah"]["Brooklyn"].keys()
         assert len(_keys) == 10
 
 
@@ -85,9 +85,10 @@ class TestReadable(unittest.TestCase):
 
     def test_add(self):
         _dict = self.graph.to_dict()
-        assert "Bob" in _dict[0].keys()
-        assert "Alice" in _dict[1].keys()
-        assert _dict[0]["Bob"].keys() == _dict[1]["Alice"].keys()
+        assert "Bob" in _dict.keys()
+        assert "Alice" in _dict.keys()
+        assert _dict["Bob"].keys() == _dict["Alice"].keys()
+
 
 if __name__ == '__main__':
     unittest.main()
