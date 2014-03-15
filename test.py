@@ -77,9 +77,17 @@ class TestReadable(unittest.TestCase):
         self.graph.add_node("Tom", 1, parents=["Bob", "Alice"])
         self.graph.add_node("Alex", 1, parents=["Bob", "Alice"])
 
-    def test_add(self):
-        print(self.graph.to_dict())
+        for i in ("Sophia", "Emma", "Olivia", "Isabella"):
+            self.graph.add_node(i, 2, parent="Tom")
 
+        for i in ("Lillian", "Evelyn", "Elizabeth"):
+            self.graph.add_node(i, 2, parent="Alex")
+
+    def test_add(self):
+        _dict = self.graph.to_dict()
+        assert "Bob" in _dict[0].keys()
+        assert "Alice" in _dict[1].keys()
+        assert _dict[0]["Bob"].keys() == _dict[1]["Alice"].keys()
 
 if __name__ == '__main__':
     unittest.main()
