@@ -30,7 +30,13 @@ def chunks(size, _list):
 class TestAdding(unittest.TestCase):
     def setUp(self):
         graph = Graph()
-        nodes = self.make_nodes()
+        node_chunks = self.make_nodes()
+        last = None
+        for node_list in node_chunks:
+            for count, node in enumerate(node_list):
+                parent = last[count] if last else Node
+                graph.add_node(node, parent=parent)
+            last = node_list
 
     def make_nodes(self):
         _chunks = chunks(5, names)
