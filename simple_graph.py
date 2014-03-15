@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 class Node(object):
     def __init__(self, data):
         self.data = data
@@ -30,7 +31,7 @@ class TreeGraph(object):
         self.edges = defaultdict(list)
 
     def add_node(self, node, depth, parent=None):
-        if not depth+1 <= len(self.nodes):
+        if not depth + 1 <= len(self.nodes):
             self.nodes.append([])
         self.nodes[depth].append(node)
         if parent:
@@ -49,3 +50,14 @@ class TreeGraph(object):
 
     def __hash__(self):
         return id(self)
+
+    def visit(self, node, _dict):
+        children = self.edges[node]
+        if children:
+            _dict[node] = dict(zip(children, ({} for i in range(0, len(children)))))
+            for i in children:
+                self.visit(i, _dict[node])
+        return _dict
+
+    def to_dict(self):
+        return [self.visit(i, {}) for i in self.nodes[0]]

@@ -1,7 +1,7 @@
-import unittest
 from functools import reduce
 from operator import eq
 from simple_graph import TreeGraph, Node
+import unittest
 
 names = ["Sophia", "Emma", "Olivia", "Isabella", "Ava", "Lily", "Zoe", "Chloe", "Mia",
          "Madison", "Emily", "Ella", "Madelyn", "Abigail", "Aubrey", "Addison",
@@ -50,6 +50,26 @@ class TestAdding(unittest.TestCase):
     def test_init(self):
         assert sum([len(i) for i in self.graph.nodes]) == len(self._list)
         assert len([len(i) for i in self.graph.nodes]) == self.chunk_size
+        assert self.graph.to_dict()[0] == {Node('Sophia'): {Node('Hannah'): {Node('Elizabeth'): {Node('Alexis'): {Node('Lauren'): {}}}}}}
+
+
+class TestAdding2(unittest.TestCase):
+    def setUp(self):
+        self.graph = TreeGraph()
+        self.nodes = [Node(i) for i in names]
+
+    def test_add(self):
+        root = self.nodes.pop(0)
+        self.graph.add_node(root, 0)
+        depth = 1
+        parent = root
+        for count, i in enumerate(self.nodes):
+            self.graph.add_node(i, depth, parent=parent)
+            if count % 10 == 0:
+                depth += 1
+                parent = i
+        from pprint import pprint
+        pprint(self.graph.to_dict())
 
 if __name__ == '__main__':
     unittest.main()
