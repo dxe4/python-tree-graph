@@ -24,7 +24,7 @@ class Node(object):
         return str(self.data)
 
 
-class Graph(object):
+class TreeGraph(object):
     def __init__(self):
         self.nodes = [[]]
         self.edges = defaultdict(list)
@@ -40,7 +40,7 @@ class Graph(object):
         self.edges[node_a].append(node_b)
 
     def __eq__(self, other):
-        if other is None or not isinstance(other, Graph):
+        if other is None or not isinstance(other, TreeGraph):
             return False
         return self.edges == other.edges and self.nodes == other.nodes
 

@@ -1,5 +1,7 @@
 import unittest
-from simple_graph import Graph, Node
+from functools import reduce
+from operator import eq
+from simple_graph import TreeGraph, Node
 
 names = ["Sophia", "Emma", "Olivia", "Isabella", "Ava", "Lily", "Zoe", "Chloe", "Mia",
          "Madison", "Emily", "Ella", "Madelyn", "Abigail", "Aubrey", "Addison",
@@ -30,23 +32,24 @@ def chunks(size, _list):
 class TestAdding(unittest.TestCase):
     def setUp(self):
         self._list = names
-        self.graph = Graph()
+        self.chunk_size = 5
+        self.graph = TreeGraph()
         node_chunks = self.make_nodes(self._list)
         last = None
         for depth, node_list in enumerate(node_chunks):
             for count, node in enumerate(node_list):
                 parent = last[count] if last else Node
-                self.graph.add_node(node,depth, parent=parent)
+                self.graph.add_node(node, depth, parent=parent)
             last = node_list
 
     def make_nodes(self, name_list):
-        _chunks = chunks(5, name_list)
+        _chunks = chunks(self.chunk_size, name_list)
         node_list = lambda _list: [Node(j) for j in _list]
         return [node_list(i) for i in _chunks]
 
     def test_init(self):
         assert sum([len(i) for i in self.graph.nodes]) == len(self._list)
-
+        assert len([len(i) for i in self.graph.nodes]) == self.chunk_size
 
 if __name__ == '__main__':
     unittest.main()
