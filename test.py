@@ -50,7 +50,8 @@ class TestAdding(unittest.TestCase):
     def test_init(self):
         assert sum([len(i) for i in self.graph.nodes]) == len(self._list)
         assert len([len(i) for i in self.graph.nodes]) == self.chunk_size
-        assert self.graph.to_dict()[0] == {Node('Sophia'): {Node('Hannah'): {Node('Elizabeth'): {Node('Alexis'): {Node('Lauren'): {}}}}}}
+        assert self.graph.to_dict()[0] == {
+        Node('Sophia'): {Node('Hannah'): {Node('Elizabeth'): {Node('Alexis'): {Node('Lauren'): {}}}}}}
 
 
 class TestAdding2(unittest.TestCase):
@@ -64,13 +65,15 @@ class TestAdding2(unittest.TestCase):
         depth = 1
         parent = root
         for count, i in enumerate(self.nodes):
-            print(count, i, depth, parent)
             self.graph.add_node(i, depth, parent=parent)
-            if (count+1) % 5 == 0:
+            if (count + 1) % 10 == 0:
                 depth += 1
                 parent = i
-        from pprint import pprint
-        pprint(self.graph.to_dict())
+    
+        _dict = self.graph.to_dict()
+        _keys = _dict[0][Node("Sophia")][Node("Emily")][Node("Hannah")][Node("Brooklyn")].keys()
+        assert len(_keys) == 10
+
 
 if __name__ == '__main__':
     unittest.main()
