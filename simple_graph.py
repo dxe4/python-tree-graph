@@ -30,12 +30,15 @@ class TreeGraph(object):
         self.nodes = [[]]
         self.edges = defaultdict(list)
 
-    def add_node(self, node, depth, parent=None):
+    def add_node(self, node, depth, parent=None, parents=None):
         if not depth + 1 <= len(self.nodes):
             self.nodes.append([])
         self.nodes[depth].append(node)
         if parent:
             self.add_edge(parent, node)
+        elif parents:
+            for i in parents:
+                self.add_edge(i, node)
 
     def add_edge(self, node_a, node_b):
         self.edges[node_a].append(node_b)

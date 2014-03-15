@@ -43,7 +43,6 @@ class TestAdding(unittest.TestCase):
     def test_init(self):
         assert sum([len(i) for i in self.graph.nodes]) == len(self._list)
         assert len([len(i) for i in self.graph.nodes]) == self.chunk_size
-        print(self.graph.to_dict()[0])
         assert self.graph.to_dict()[0] == {
             'Sophia': {'Hannah': {'Elizabeth': {'Alexis': {'Lauren': None}}}}}
 
@@ -72,9 +71,14 @@ class TestAdding2(unittest.TestCase):
 class TestReadable(unittest.TestCase):
     def setUp(self):
         self.graph = TreeGraph()
+        self.graph.add_node("Bob", 0)
+        self.graph.add_node("Alice", 0)
+
+        self.graph.add_node("Tom", 1, parents=["Bob", "Alice"])
+        self.graph.add_node("Alex", 1, parents=["Bob", "Alice"])
 
     def test_add(self):
-        pass
+        print(self.graph.to_dict())
 
 
 if __name__ == '__main__':
