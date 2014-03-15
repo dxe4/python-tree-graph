@@ -1,5 +1,3 @@
-from functools import reduce
-from operator import eq
 from simple_graph import TreeGraph, Node
 import unittest
 
@@ -34,7 +32,7 @@ class TestAdding(unittest.TestCase):
         self._list = names
         self.chunk_size = 5
         self.graph = TreeGraph()
-        node_chunks = self.make_nodes(self._list)
+        node_chunks = chunks(self.chunk_size, self._list)
         last = None
         for depth, node_list in enumerate(node_chunks):
             for count, node in enumerate(node_list):
@@ -42,23 +40,18 @@ class TestAdding(unittest.TestCase):
                 self.graph.add_node(node, depth, parent=parent)
             last = node_list
 
-    def make_nodes(self, name_list):
-        _chunks = chunks(self.chunk_size, name_list)
-        node_list = lambda _list: [Node(j) for j in _list]
-        return [node_list(i) for i in _chunks]
-
     def test_init(self):
         assert sum([len(i) for i in self.graph.nodes]) == len(self._list)
         assert len([len(i) for i in self.graph.nodes]) == self.chunk_size
         print(self.graph.to_dict()[0])
         assert self.graph.to_dict()[0] == {
-        Node('Sophia'): {Node('Hannah'): {Node('Elizabeth'): {Node('Alexis'): {Node('Lauren'): None}}}}}
+            'Sophia': {'Hannah': {'Elizabeth': {'Alexis': {'Lauren': None}}}}}
 
 
 class TestAdding2(unittest.TestCase):
     def setUp(self):
         self.graph = TreeGraph()
-        self.nodes = [Node(i) for i in names]
+        self.nodes = names
 
     def test_add(self):
         root = self.nodes.pop(0)
@@ -72,8 +65,16 @@ class TestAdding2(unittest.TestCase):
                 parent = i
 
         _dict = self.graph.to_dict()
-        _keys = _dict[0][Node("Sophia")][Node("Emily")][Node("Hannah")][Node("Brooklyn")].keys()
+        _keys = _dict[0]["Sophia"]["Emily"]["Hannah"]["Brooklyn"].keys()
         assert len(_keys) == 10
+
+
+class TestReadable(unittest.TestCase):
+    def setUp(self):
+        self.graph = TreeGraph()
+
+    def test_add(self):
+        pass
 
 
 if __name__ == '__main__':
