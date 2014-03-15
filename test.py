@@ -33,10 +33,10 @@ class TestAdding(unittest.TestCase):
         self.graph = Graph()
         node_chunks = self.make_nodes(self._list)
         last = None
-        for node_list in node_chunks:
+        for depth, node_list in enumerate(node_chunks):
             for count, node in enumerate(node_list):
                 parent = last[count] if last else Node
-                self.graph.add_node(node, parent=parent)
+                self.graph.add_node(node,depth, parent=parent)
             last = node_list
 
     def make_nodes(self, name_list):
@@ -45,7 +45,7 @@ class TestAdding(unittest.TestCase):
         return [node_list(i) for i in _chunks]
 
     def test_init(self):
-        assert len(self.graph.nodes) == len(self._list)
+        assert sum([len(i) for i in self.graph.nodes]) == len(self._list)
 
 
 if __name__ == '__main__':

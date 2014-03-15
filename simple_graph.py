@@ -26,11 +26,13 @@ class Node(object):
 
 class Graph(object):
     def __init__(self):
-        self.nodes = list()
+        self.nodes = [[]]
         self.edges = defaultdict(list)
 
-    def add_node(self, node, parent=None):
-        self.nodes.append(node)
+    def add_node(self, node, depth, parent=None):
+        if not depth+1 <= len(self.nodes):
+            self.nodes.append([])
+        self.nodes[depth].append(node)
         if parent:
             self.add_edge(parent, node)
 
